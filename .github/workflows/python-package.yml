@@ -150,7 +150,7 @@ jobs:
               DO_CLI_TEST: "True"
 
           - os: ubuntu-latest
-            python-version: "pypy-3.8"
+            python-version: "pypy-3.9"
             env:
               BUILD_DOCS: "False"
               DEPLOY_SDIST: "True"
