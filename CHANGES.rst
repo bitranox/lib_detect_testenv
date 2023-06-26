@@ -5,6 +5,10 @@ Changelog
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
 
+v2.0.4
+---------
+2023-06-26: suppress upload of .egg files to pypi.org
+
 v2.0.3
 ---------
 2023-01-13:
