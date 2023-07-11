@@ -102,6 +102,10 @@ def is_pytest_active(arg_string: Optional[str] = None) -> bool:
     ----------
     none
 
+    >>> assert False == is_pytest_active(arg_string='')
+    >>> assert True == is_pytest_active(arg_string='pytest.py')
+    >>> assert True == is_pytest_active(arg_string='/pytest/__main__.py')
+
     """
     # is_pytest_active}}}
 
