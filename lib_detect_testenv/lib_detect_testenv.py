@@ -114,7 +114,7 @@ def is_pytest_active(arg_string: Optional[str] = None) -> bool:
         return True
     if ("pytest.py" in arg_string) or ("/pytest/__main__.py" in arg_string):
         return True
-    return False
+    return False            # pragma: no cover
 
 
 # is_setup_active{{{
