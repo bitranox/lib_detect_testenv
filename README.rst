@@ -2,7 +2,7 @@ lib_detect_testenv
 ==================
 
 
-Version v2.0.4 as of 2023-06-26 see `Changelog`_
+Version v2.0.5 as of 2023-07-11 see `Changelog`_
 
 |build_badge| |license| |jupyter| |pypi| |pypi-downloads| |black|
 
@@ -39,7 +39,7 @@ Version v2.0.4 as of 2023-06-26 see `Changelog`_
    :target: https://codeclimate.com/github/bitranox/lib_detect_testenv/test_coverage
    :alt: Code Coverage
 
-.. |snyk| image:: https://img.shields.io/snyk/vulnerabilities/github/bitranox/lib_detect_testenv
+.. |snyk| image:: https://snyk.io/test/github/bitranox/lib_detect_testenv/badge.svg
    :target: https://snyk.io/test/github/bitranox/lib_detect_testenv
 
 .. |black| image:: https://img.shields.io/badge/code%20style-black-000000.svg
@@ -53,14 +53,14 @@ detects test environments: pytest, doctest and pycharm docrunner
 
 ----
 
-automated tests, Travis Matrix, Documentation, Badges, etc. are managed with `PizzaCutter <https://github
+automated tests, Github Actions, Documentation, Badges, etc. are managed with `PizzaCutter <https://github
 .com/bitranox/PizzaCutter>`_ (cookiecutter on steroids)
 
 Python version required: 3.7.0 or newer
 
 tested on recent linux with python 3.7, 3.8, 3.9, 3.10, 3.11, pypy-3.9 - architectures: amd64
 
-`100% code coverage <https://codecov.io/gh/bitranox/lib_detect_testenv>`_, flake8 style checking ,mypy static type checking ,tested under `Linux, macOS, Windows <https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-package.yml>`_, automatic daily builds and monitoring
+`100% code coverage <https://codeclimate.com/github/bitranox/lib_detect_testenv/test_coverage>`_, flake8 style checking ,mypy static type checking ,tested under `Linux, macOS, Windows <https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-package.yml>`_, automatic daily builds and monitoring
 
 ----
 
@@ -298,6 +298,13 @@ Installation and Upgrade
 
     python -m pip install --upgrade lib_detect_testenv
 
+
+- to install the latest release from PyPi via pip, including test dependencies:
+
+.. code-block::
+
+    python -m pip install --upgrade lib_detect_testenv[test]
+
 - to install the latest version from github via pip:
 
 
@@ -321,14 +328,14 @@ Installation and Upgrade
     python -m pip install --upgrade -r /<path>/requirements.txt
 
 
-- to install the latest development version from source code:
+- to install the latest development version, including test dependencies from source code:
 
 .. code-block::
 
     # cd ~
     $ git clone https://github.com/bitranox/lib_detect_testenv.git
     $ cd lib_detect_testenv
-    python setup.py install
+    python -m pip install -e .[test]
 
 - via makefile:
   makefiles are a very convenient way to install. Here we can do much more,
@@ -386,6 +393,19 @@ Changelog
 - new MAJOR version for incompatible API changes,
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
+
+v2.0.5
+---------
+2023-07-11:
+    - introduce PEP517 packaging standard
+    - introduce pyproject.toml build-system
+    - remove mypy.ini
+    - remove pytest.ini
+    - remove setup.cfg
+    - remove setup.py
+    - remove .bettercodehub.yml
+    - remove .travis.yml
+    - update black config
 
 v2.0.4
 ---------
