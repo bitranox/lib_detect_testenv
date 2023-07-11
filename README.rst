@@ -141,6 +141,10 @@ Usage
         ----------
         none
 
+        >>> assert False == is_doctest_active(arg_string="")
+        >>> assert True == is_doctest_active(arg_string="docrunner.py")
+        >>> assert True == is_doctest_active(arg_string="doctest.py")
+
         """
 
 - detect if pytest is active
@@ -191,6 +195,9 @@ Usage
         ----------
         none
 
+        >>> assert False == is_setup_active(arg_string="")
+        >>> assert True == is_setup_active(arg_string="setup.py")
+
         """
 
 - detect if "setup.py test" is active
@@ -215,6 +222,10 @@ Usage
         Exceptions
         ----------
         none
+
+        >>> assert False == is_setup_test_active('')
+        >>> assert False == is_setup_test_active('setup.py')
+        >>> assert True == is_setup_test_active('setup.py test')
 
         """
 

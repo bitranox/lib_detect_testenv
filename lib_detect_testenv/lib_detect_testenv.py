@@ -69,6 +69,10 @@ def is_doctest_active(arg_string: Optional[str] = None) -> bool:
     ----------
     none
 
+    >>> assert False == is_doctest_active(arg_string="")
+    >>> assert True == is_doctest_active(arg_string="docrunner.py")
+    >>> assert True == is_doctest_active(arg_string="doctest.py")
+
     """
     # is_doctest_active}}}
 
@@ -130,6 +134,9 @@ def is_setup_active(arg_string: Optional[str] = None) -> bool:
     ----------
     none
 
+    >>> assert False == is_setup_active(arg_string="")
+    >>> assert True == is_setup_active(arg_string="setup.py")
+
     """
     # is_setup_active}}}
     arg_string = _get_sys_argv_str(arg_string)
@@ -155,6 +162,10 @@ def is_setup_test_active(arg_string: Optional[str] = None) -> bool:
     Exceptions
     ----------
     none
+
+    >>> assert False == is_setup_test_active('')
+    >>> assert False == is_setup_test_active('setup.py')
+    >>> assert True == is_setup_test_active('setup.py test')
 
     """
     # is_setup_test_active}}}
