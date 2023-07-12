@@ -2,7 +2,7 @@ lib_detect_testenv
 ==================
 
 
-Version v2.0.5 as of 2023-07-11 see `Changelog`_
+Version v2.0.5 as of 2023-07-12 see `Changelog`_
 
 |build_badge| |license| |jupyter| |pypi| |pypi-downloads| |black|
 
@@ -169,6 +169,9 @@ Usage
         Exceptions
         ----------
         none
+
+        >>> assert True == is_pytest_active(arg_string='pytest.py')
+        >>> assert True == is_pytest_active(arg_string='/pytest/__main__.py')
 
         """
 
@@ -417,6 +420,7 @@ v2.0.5
     - remove .bettercodehub.yml
     - remove .travis.yml
     - update black config
+    - clean ./tests/test_cli.py
 
 v2.0.4
 ---------
