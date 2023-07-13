@@ -10,7 +10,7 @@ authors = [
 ]
 description = "detects if pytest or doctest or pyrunner on pycharm is running"
 readme = "README.rst"
-requires-python = ">=3.7.0"
+requires-python = ">=3.8.0"
 keywords = [
 ]
 license = {text = "MIT"}
