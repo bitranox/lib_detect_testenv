@@ -244,6 +244,7 @@ def _get_sys_argv_str(arg_string: Optional[str] = None) -> str:
     if arg_string is None:
         arg_string = str(sys.argv)
     arg_string = arg_string.replace("\\", "/")
+    arg_string = arg_string.replace("//", "/")
     return arg_string
 
 
