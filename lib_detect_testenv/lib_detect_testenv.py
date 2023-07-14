@@ -42,6 +42,8 @@ def is_testenv_active(arg_string: Optional[str] = None) -> bool:
     Examples
     ----------
 
+    >>> print(_get_sys_argv_str())
+    ['...']
     >>> assert is_testenv_active() == True
     """
     # is_testenv_active}}}
@@ -112,7 +114,11 @@ def is_pytest_active(arg_string: Optional[str] = None) -> bool:
     # this is used in our tests when we test cli-commands
     if os.getenv("PYTEST_IS_RUNNING"):
         return True
-    if ("pytest.py" in arg_string) or ("pytest" in arg_string and "-m" in arg_string) or ("/pytest/__main__.py" in arg_string):
+    if "pytest.py" in arg_string:
+        return True
+    if "/pytest/__main__.py" in arg_string:
+        return True
+    if "-m" in arg_string and "pytest.py" in arg_string:
         return True
     return False            # pragma: no cover
 
@@ -184,9 +190,9 @@ def is_doctest_in_arg_string(arg_string: str) -> bool:
     """
     >>> assert is_doctest_in_arg_string('test') == False
     >>> assert is_doctest_in_arg_string('test/docrunner.py::::test')
-    >>> assert is_doctest_in_arg_string('test/pytest.py::::test')
+
     """
-    if ("docrunner.py" in arg_string) or ("pytest.py" in arg_string) or ("/pytest/__main__.py" in arg_string):
+    if "docrunner.py" in arg_string:
         return True
     else:
         return False
