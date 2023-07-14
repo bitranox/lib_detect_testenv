@@ -1,4 +1,5 @@
-|build_badge| |license| |jupyter| |pypi| |pypi-downloads| |black|
+|build_badge| |codeql| |license| |jupyter| |pypi| 
+|pypi-downloads| |black|
 
 |codecov| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
 
@@ -7,6 +8,9 @@
 .. |build_badge| image:: https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-package.yml/badge.svg
    :target: https://github.com/bitranox/lib_detect_testenv/actions/workflows/python-package.yml
 
+
+.. |codeql| image:: https://github.com/bitranox/lib_detect_testenv/actions/workflows/codeql-analysis.yml/badge.svg?event=push
+   :target: https://github.com//bitranox/lib_detect_testenv/actions/workflows/codeql-analysis.yml
 
 .. |license| image:: https://img.shields.io/github/license/webcomics/pywine.svg
    :target: http://en.wikipedia.org/wiki/MIT_License
