@@ -1,7 +1,5 @@
 |build_badge| |codeql| |license| |jupyter| |pypi| 
-|pypi-downloads| |black|
-
-|codecov| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
+|pypi-downloads| |black| |codecov| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
 
 
 

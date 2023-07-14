@@ -5,9 +5,7 @@ lib_detect_testenv
 Version v2.0.7 as of 2023-07-14 see `Changelog`_
 
 |build_badge| |codeql| |license| |jupyter| |pypi|
-|pypi-downloads| |black|
-
-|codecov| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
+|pypi-downloads| |black| |codecov| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
 
 
 
