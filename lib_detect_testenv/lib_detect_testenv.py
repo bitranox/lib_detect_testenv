@@ -112,7 +112,7 @@ def is_pytest_active(arg_string: Optional[str] = None) -> bool:
     # this is used in our tests when we test cli-commands
     if os.getenv("PYTEST_IS_RUNNING"):
         return True
-    if ("pytest.py" in arg_string) or ("/pytest/__main__.py" in arg_string):
+    if ("pytest.py" in arg_string) or ("pytest" in arg_string and "-m" in arg_string) or ("/pytest/__main__.py" in arg_string):
         return True
     return False            # pragma: no cover
 
