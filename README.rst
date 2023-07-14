@@ -2,7 +2,7 @@ lib_detect_testenv
 ==================
 
 
-Version v2.0.7 as of 2023-07-14 see `Changelog`_
+Version v2.0.8 as of 2023-07-14 see `Changelog`_
 
 |build_badge| |codeql| |license| |jupyter| |pypi|
 |pypi-downloads| |black| |codecov| |cc_maintain| |cc_issues| |cc_coverage| |snyk|
@@ -283,19 +283,7 @@ Usage
 Usage from Commandline
 ------------------------
 
-.. code-block::
-
-   Usage: lib_detect_testenv [OPTIONS] COMMAND [ARGS]...
-
-     detects if pytest or doctest or pyrunner on pycharm is running
-
-   Options:
-     --version                     Show the version and exit.
-     --traceback / --no-traceback  return traceback information on cli
-     -h, --help                    Show this message and exit.
-
-   Commands:
-     info  get program informations
+there are no cli commands
 
 Installation and Upgrade
 ------------------------
@@ -382,8 +370,6 @@ following modules will be automatically installed :
 .. code-block:: bash
 
     ## Project Requirements
-    click
-    cli_exit_tools
 
 Acknowledgements
 ----------------
@@ -409,6 +395,12 @@ Changelog
 - new MAJOR version for incompatible API changes,
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
+
+v2.0.8
+---------
+2023-07-14:
+    - remove dependency click
+    - remove dependency cli_exit_tools to avoid circular dependency
 
 v2.0.7
 ---------

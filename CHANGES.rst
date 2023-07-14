@@ -5,6 +5,12 @@ Changelog
 - new MINOR version for added functionality in a backwards compatible manner
 - new PATCH version for backwards compatible bug fixes
 
+v2.0.8
+---------
+2023-07-14:
+    - remove dependency click
+    - remove dependency cli_exit_tools to avoid circular dependency
+
 v2.0.7
 ---------
 2023-07-14:

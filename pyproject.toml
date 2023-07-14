@@ -26,10 +26,8 @@ classifiers = [
 # dependencies - former setup.cfg "install_requires"
 # see: https://setuptools.pypa.io/en/latest/userguide/dependency_management.html
 dependencies = [
-    "click",
-    "cli_exit_tools",
 ]
-version = "v2.0.7"
+version = "v2.0.8"
 # seems to be not allowed anymore
 # zip-save = false
 
@@ -53,8 +51,6 @@ test = [
     "readme_renderer",
 ]
 
-[project.scripts]
-    lib_detect_testenv = "lib_detect_testenv.lib_detect_testenv_cli:cli_main"
 
 [tool.setuptools.package-data]
 lib_detect_testenv = [

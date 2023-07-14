@@ -2,7 +2,7 @@ lib_detect_testenv
 ==================
 
 
-Version v2.0.7 as of 2023-07-14 see `Changelog`_
+Version v2.0.8 as of 2023-07-14 see `Changelog`_
 
 
 .. include:: ./badges.rst
