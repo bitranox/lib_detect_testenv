@@ -41,8 +41,7 @@ def is_testenv_active(arg_string: Optional[str] = None) -> bool:
 
     Examples
     ----------
-    >>> if not is_testenv_active(): \
-            sys.stderr.write(_get_sys_argv_str())
+
     >>> assert is_testenv_active() == True
     """
     # is_testenv_active}}}
