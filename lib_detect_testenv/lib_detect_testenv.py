@@ -42,8 +42,6 @@ def is_testenv_active(arg_string: Optional[str] = None) -> bool:
     Examples
     ----------
 
-    >>> print(_get_sys_argv_str())
-    ['...']
     >>> assert is_testenv_active() == True
     """
     # is_testenv_active}}}
@@ -118,7 +116,7 @@ def is_pytest_active(arg_string: Optional[str] = None) -> bool:
         return True
     if "/pytest/__main__.py" in arg_string:
         return True
-    if "-m" in arg_string and "pytest.py" in arg_string:
+    if "-m" in arg_string and "pytest" in arg_string:
         return True
     return False            # pragma: no cover
 
