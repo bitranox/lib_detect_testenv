@@ -34,6 +34,7 @@ _DEFAULT_PIP_AUDIT_IGNORES = (
     "GHSA-4xh5-x5gv-qwph",
     "PYSEC-2022-43012",  # setuptools 65.5.0 - not a runtime dependency
     "PYSEC-2025-49",  # setuptools 65.5.0 - not a runtime dependency
+    "GHSA-cx63-2mw6-8hw5",  # setuptools 65.5.0 - not a runtime dependency
 )
 _AuditPayload = list[dict[str, object]]
 
