@@ -4,7 +4,9 @@ version = "3.0.0"
 description = "Detect test environment - pytest, doctest, unittest, or regular execution"
 readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+  "rich-click>=1.9.4",
+]
 license = { text = "MIT" }
 authors = [{ name = "bitranox", email = "bitranox@gmail.com" }]
 keywords = ["testing", "pytest", "doctest", "unittest", "test-detection", "test-environment"]
@@ -28,9 +30,6 @@ Repository = "https://github.com/bitranox/lib_detect_testenv.git"
 Issues = "https://github.com/bitranox/lib_detect_testenv/issues"
 
 [project.optional-dependencies]
-cli = [
-  "rich-click>=1.9.4",
-]
 dev = [
   "pytest>=8.4.2",
   "pytest-cov>=7.0.0",

@@ -59,12 +59,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 **BREAKING CHANGES:**
 - Renamed internal module `detect_testenv.py` to `lib_detect_testenv.py`
-- Dependencies now optional - **core library has ZERO dependencies!**
-  - `dependencies = []` - Core library is completely dependency-free
-  - `[cli]` extra includes `rich-click>=1.9.4` for CLI functionality only
-  - Users can import library functions without installing CLI dependencies
-  - Import: `pip install lib_detect_testenv` (no dependencies)
-  - With CLI: `pip install lib_detect_testenv[cli]` (includes rich-click)
+- Minimal dependencies - Only `rich-click>=1.9.4` required for CLI functionality
+  - `dependencies = ["rich-click>=1.9.4"]` - Required for CLI entry point
+  - Core detection library functions have no external dependencies (pure stdlib)
+  - Users can import detection functions (`is_pytest_active()`, etc.) without using rich-click
+  - CLI commands require rich-click for beautiful terminal output
 
 **Configuration:**
 - Keywords updated from `["logging", "rich", "cli", "terminal", "ansi"]` to `["testing", "pytest", "doctest", "unittest", "test-detection", "test-environment"]` for accurate PyPI discoverability
