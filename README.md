@@ -11,6 +11,7 @@
 [![codecov](https://codecov.io/gh/bitranox/lib_detect_testenv/graph/badge.svg?token=UFBaUDIgRk)](https://codecov.io/gh/bitranox/lib_detect_testenv)
 [![Maintainability](https://qlty.sh/badges/041ba2c1-37d6-40bb-85a0-ec5a8a0aca0c/maintainability.svg)](https://qlty.sh/gh/bitranox/projects/lib_detect_testenv)
 [![Known Vulnerabilities](https://snyk.io/test/github/bitranox/lib_detect_testenv/badge.svg)](https://snyk.io/test/github/bitranox/lib_detect_testenv)
+[![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 
 **Detect test environments: pytest, doctest, and setup.py test**
 
