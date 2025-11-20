@@ -43,6 +43,7 @@ dev = [
   "textual>=6.3.0",
   "import-linter>=2.5.2",
   "rich-click>=1.9.4",  # Needed for CLI tests
+  "setuptools>=78.1.1",
 ]
 
 [project.scripts]
