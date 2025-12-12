@@ -22,7 +22,7 @@ When working with Python code:
 - `python_clean_code.md`
 - `python_small_functions_style.md`
 - `python_libraries_to_use.md`
-- `python_lib_structure_template.md`
+- `python_structure_template.md`
 
 ### Additional Guidelines
 - `self_documenting.md`
@@ -42,28 +42,50 @@ lib_detect_testenv/
 ├── notebooks/                  # Jupyter notebooks for experiments
 ├── scripts/                    # Build and automation scripts
 │   ├── build.py               # Build wheel/sdist
-│   ├── bump*.py               # Version bump scripts
+│   ├── bump.py                # Version bump (generic)
+│   ├── bump_major.py          # Bump major version
+│   ├── bump_minor.py          # Bump minor version
+│   ├── bump_patch.py          # Bump patch version
+│   ├── bump_version.py        # Version bump utilities
 │   ├── clean.py               # Clean build artifacts
-│   ├── test.py                # Run tests with coverage
-│   ├── push.py                # Git push with monitoring
-│   ├── release.py             # Create releases
+│   ├── cli.py                 # CLI for scripts
+│   ├── dependencies.py        # Dependency management
+│   ├── dev.py                 # Development install
+│   ├── help.py                # Show help
+│   ├── install.py             # Install package
 │   ├── menu.py                # Interactive TUI menu
+│   ├── push.py                # Git push
+│   ├── release.py             # Create releases
+│   ├── run_cli.py             # Run CLI
+│   ├── target_metadata.py     # Metadata generation
+│   ├── test.py                # Run tests with coverage
+│   ├── toml_config.py         # TOML configuration utilities
+│   ├── version_current.py     # Print current version
 │   └── _utils.py              # Shared utilities
 ├── src/
-│   └── lib_detect_testenv/  # Main Python package
-│       ├── __init__.py        # Package initialization
-│       ├── __init__conf__.py  # Configuration loader
+│   └── lib_detect_testenv/    # Main Python package
+│       ├── __init__.py        # Package initialization & public API
+│       ├── __init__conf__.py  # Configuration constants
 │       ├── __main__.py        # CLI entry point
+│       ├── behaviors.py       # Domain behaviors (greeting, failure hooks)
 │       ├── cli.py             # CLI implementation
-│       ├── behaviors.py       # Core behaviors/business logic
+│       ├── lib_detect_testenv.py  # Core detection functions
 │       └── py.typed           # PEP 561 marker
 ├── tests/                     # Test suite
+│   ├── conftest.py            # Pytest fixtures
+│   ├── test_behaviors.py      # Behavior tests
+│   ├── test_cli.py            # CLI tests
+│   ├── test_lib_detect_testenv.py  # Core library tests
+│   ├── test_metadata.py       # Metadata tests
+│   ├── test_module_entry.py   # Module entry tests
+│   └── test_scripts.py        # Script tests
 ├── .env.example               # Example environment variables
 ├── CLAUDE.md                  # Claude Code guidelines (this file)
 ├── CHANGELOG.md               # Version history
 ├── CONTRIBUTING.md            # Contribution guidelines
 ├── DEVELOPMENT.md             # Development setup guide
 ├── INSTALL.md                 # Installation instructions
+├── LICENSE                    # MIT License
 ├── Makefile                   # Make targets for common tasks
 ├── pyproject.toml             # Project metadata & dependencies
 ├── codecov.yml                # Codecov configuration
@@ -73,7 +95,7 @@ lib_detect_testenv/
 ## Versioning & Releases
 
 - **Single Source of Truth**: Package version is in `pyproject.toml` (`[project].version`)
-- **Version Bumps**: update `pyproject.toml` , `CHANGELOG.md` and update the constants in `src/../__init__conf__.py` according to `pyproject.toml`  
+- **Version Bumps**: update `pyproject.toml`, `CHANGELOG.md` and update the constants in `src/lib_detect_testenv/__init__conf__.py` according to `pyproject.toml`
     - Automation rewrites `src/lib_detect_testenv/__init__conf__.py` from `pyproject.toml`, so runtime code imports generated constants instead of querying `importlib.metadata`.
     - After updating project metadata (version, summary, URLs, authors) run `make test` (or `python -m scripts.test`) to regenerate the metadata module before committing.
 - **Release Tags**: Format is `vX.Y.Z` (push tags for CI to build and publish)
@@ -103,6 +125,16 @@ lib_detect_testenv/
 Follow the guidelines in `python_clean_code.md` for all Python code.
 
 ## Architecture Overview
+
+This library provides test environment detection with a simple layered structure:
+
+- **lib_detect_testenv.py**: Core detection functions (`is_testenv_active`, `is_pytest_active`, `is_doctest_active`, etc.)
+- **behaviors.py**: Domain behaviors (greeting, failure hooks for CLI testing)
+- **cli.py**: CLI interface using rich-click
+
+Import rules (enforced by import-linter):
+- `cli` depends on `lib_detect_testenv` and `behaviors`
+- Core detection functions have no internal dependencies
 
 Apply principles from `python_clean_architecture.md` when designing and implementing features.
 
