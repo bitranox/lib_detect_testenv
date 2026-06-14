@@ -3,7 +3,7 @@ name = "lib_detect_testenv"
 version = "3.0.2"
 description = "Detect test environment - pytest, doctest, unittest, or regular execution"
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 dependencies = [
   "rich-click>=1.9.8",
 ]
@@ -13,7 +13,6 @@ keywords = ["testing", "pytest", "doctest", "unittest", "test-detection", "test-
 classifiers = [
   "Programming Language :: Python :: 3",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
@@ -75,6 +74,11 @@ typeCheckingMode = "strict"
 extraPaths = [
   "src",
 ]
+# tomli (the tomllib backport used on Python < 3.11) ships no type info, so
+# tomli.load/loads resolve as unknown under pyright on 3.10. Kept repo-wide
+# because the affected calls live in tests. (rich-click decorators are handled
+# by the typed_click facade, not this rule.)
+reportUnknownMemberType = false
 # Allow unknown types from tomllib/tomli conditional imports (Python 3.10 compatibility)
 reportUnknownVariableType = false
 reportUnknownArgumentType = false
