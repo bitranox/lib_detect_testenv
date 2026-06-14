@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+## [3.0.2] 2026-06-14
+
+### Changed
+- Added a `typed_click.py` facade wrapping rich-click's `option` / `version_option` decorators behind explicit, fully-known signatures, and removed the global `reportUnknownMemberType` suppression — keeping the CLI strict-clean under pyright 1.1.410 without disabling the rule (ignore isolated to the facade).
+- Migrated build automation from the in-repo `scripts/` package to the external `bmk` tooling (`uvx bmk`); removed the obsolete `scripts/` directory and `[tool.scripts.test]` config; added `[tool.bashate]` settings.
+
 ## [3.0.1] - 2025-12-15
 
 ### Changed
