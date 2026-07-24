@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.3] 2026-07-24 16:01:54
+
+### Fixed
+- Fixed CI going red under the latest ruff (0.16 widened its default rule set to ~920 rules on a
+  repo with no explicit `[tool.ruff.lint].select`): pinned the curated bitranox rule select instead
+  of chasing the exploded default set.
+- `raise SystemExit(2)` in the CLI's error handlers now uses `from e` so tracebacks show the
+  original cause (B904).
+- `print_info()` and the `__main__` guard now write via `sys.stdout`/`sys.stderr` instead of `print`,
+  fixing a latent bug where the guard printed a `bytes` literal's repr instead of the plain message.
+
+### Changed
+- Added the curated `[tool.ruff.lint].select` (matching `bitranox_template_py_cli`) plus
+  `pydocstyle` Google convention and a `tests/*.py` per-file-ignore list, replacing the previous
+  no-`select` config that inherited ruff's entire default rule set.
+- Made the Click CLI callback parameters keyword-only (`*,`) so ruff's `PLR0917` no longer fires;
+  Click already invokes command callbacks by keyword, so this is not a call-site change.
+- Simplified boolean-returning `if/return True/False` branches in `lib_detect_testenv.py` to direct
+  `return <condition>` expressions (SIM103).
+- Moved two deferred, no-reason `import sys`/`from rich.style import Style` statements in `cli.py`
+  to the module top (PLC0415).
+- Replaced `Optional[X]` with `X | None` throughout `cli.py` (UP045).
+
 ## [3.0.2] 2026-06-14
 
 ### Changed

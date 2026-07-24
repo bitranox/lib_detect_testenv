@@ -148,14 +148,14 @@ The library exports the following functions from `lib_detect_testenv`:
 
 ```python
 from lib_detect_testenv import (
-    is_testenv_active,      # Detect any test environment
-    is_doctest_active,      # Detect doctest/docrunner
-    is_pytest_active,       # Detect pytest
-    is_setup_active,        # Detect setup.py
-    is_setup_test_active,   # Detect setup.py test
+    is_testenv_active,  # Detect any test environment
+    is_doctest_active,  # Detect doctest/docrunner
+    is_pytest_active,  # Detect pytest
+    is_setup_active,  # Detect setup.py
+    is_setup_test_active,  # Detect setup.py test
     is_doctest_in_arg_string,  # Check if doctest in arg string
-    add_path_to_syspath,    # Add path to sys.path
-    PathLikeOrString,       # Type alias for paths
+    add_path_to_syspath,  # Add path to sys.path
+    PathLikeOrString,  # Type alias for paths
 )
 ```
 
@@ -271,9 +271,9 @@ Returns `True` if "setup.py test" is detected.
 from lib_detect_testenv import is_setup_test_active
 
 # Examples
-assert is_setup_test_active('') == False
-assert is_setup_test_active('setup.py') == False
-assert is_setup_test_active('setup.py test') == True
+assert is_setup_test_active("") == False
+assert is_setup_test_active("setup.py") == False
+assert is_setup_test_active("setup.py test") == True
 ```
 
 #### `is_doctest_in_arg_string(arg_string: str) -> bool`
@@ -291,8 +291,8 @@ Checks if docrunner.py is present in the argument string.
 from lib_detect_testenv import is_doctest_in_arg_string
 
 # Examples
-assert is_doctest_in_arg_string('test') == False
-assert is_doctest_in_arg_string('test/docrunner.py::::test') == True
+assert is_doctest_in_arg_string("test") == False
+assert is_doctest_in_arg_string("test/docrunner.py::::test") == True
 ```
 
 #### `add_path_to_syspath(path_to_append: PathLikeOrString) -> None`

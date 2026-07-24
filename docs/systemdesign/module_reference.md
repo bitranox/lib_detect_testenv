@@ -114,6 +114,7 @@ if is_testenv_active():
 if is_pytest_active():
     # pytest-specific behavior
     import pytest
+
     pytest.skip("Skip in pytest")
 ```
 
