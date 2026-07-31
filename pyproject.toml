@@ -1,6 +1,6 @@
 [project]
 name = "lib_detect_testenv"
-version = "3.0.3"
+version = "3.0.4"
 description = "Detect test environment - pytest, doctest, unittest, or regular execution"
 readme = "README.md"
 requires-python = ">=3.10"
