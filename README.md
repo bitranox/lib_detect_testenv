@@ -30,7 +30,7 @@ This library provides utility functions to detect whether your code is running i
 
 ### Recommended: Install via UV
 
-UV is an ultrafast Python package installer written in Rust (10–20× faster than pip/poetry):
+UV is an ultrafast Python package installer written in Rust (10-20× faster than pip/poetry):
 
 ```bash
 # Install uv
@@ -65,9 +65,39 @@ For more installation methods (pipx, source builds, etc.), see [INSTALL.md](INST
 
 ### Python Version Requirements
 
-- **Python 3.9+** is required
+- **Python 3.10+** is required
 - Tested on Linux, macOS, and Windows
-- CI runs on CPython 3.9+ and PyPy
+- CI runs on CPython 3.10 to 3.15
+
+### Why we recommend uv: supply-chain protection
+
+This repository commits a `uv.lock`. It pins every package the project needs, transitive
+dependencies included, to an exact version and to the hashes of that version's files. The
+`exclude-newer` setting under `[tool.uv]` in `pyproject.toml` adds a cooldown: uv leaves any
+release younger than that out of the lock. CI installs from the lock, so a hijacked release that
+gets pulled again within the cooldown never reaches our builds, and a file whose hash does not
+match is refused.
+
+That protection stays in this repository. The installable package declares only lower bounds
+(`>=`) for its dependencies, so a plain `pip install` takes the newest release of every transitive
+dependency at the moment you run it. If one of them was hijacked an hour earlier, you get the
+hijacked version. `pipx install` and `uv tool install` without options do the same.
+
+To install the command line tool with a cooldown of your own (uv then skips any release younger
+than 7 days, transitive ones included), or to run the exact tree our CI tests:
+
+```bash
+uv tool install --exclude-newer "7 days" lib_detect_testenv
+git clone https://github.com/bitranox/lib_detect_testenv.git && cd lib_detect_testenv && uv sync --locked && uv run lib_detect_testenv --help
+```
+
+If you depend on lib_detect_testenv in your own project, give that project the same cooldown (7 days here, as
+an example) and commit the `uv.lock` that `uv add lib_detect_testenv` writes:
+
+```toml
+[tool.uv]
+exclude-newer = "7 days"
+```
 
 ## Usage
 
@@ -79,11 +109,11 @@ The package provides a CLI for shell scripting and CI/CD integration. All comman
 
 All detection commands use a **3-level exit code system**:
 
-| Code | Meaning | Use Case |
-|------|---------|----------|
-| **0** | Test environment **detected** | Success - test env found |
-| **1** | Test environment **not detected** | Normal negative result (not an error) |
-| **2** | **Error occurred** | Command failed (bad arguments, exception) |
+| Code  | Meaning                           | Use Case                                  |
+|-------|-----------------------------------|-------------------------------------------|
+| **0** | Test environment **detected**     | Success - test env found                  |
+| **1** | Test environment **not detected** | Normal negative result (not an error)     |
+| **2** | **Error occurred**                | Command failed (bad arguments, exception) |
 
 This design follows Unix conventions and makes shell scripting intuitive:
 
