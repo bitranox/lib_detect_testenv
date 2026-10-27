@@ -224,3 +224,10 @@ ignores = ["E003"]
 
 [tool.uv]
 exclude-newer = "1 day"
+
+[tool.scripts.test]
+# Keep the suite serial. The library detects pytest from sys.argv, and a pytest-xdist
+# worker's argv does not name pytest, so the is_testenv_active doctest and
+# test_is_testenv_active_uses_sys_argv_by_default fail on every worker. No xdist group can
+# help: every worker has the same argv.
+workers = 1
