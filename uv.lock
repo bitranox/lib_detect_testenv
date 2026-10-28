@@ -996,7 +996,7 @@ wheels = [
 
 [[package]]
 name = "lib-detect-testenv"
-version = "3.0.6"
+version = "3.0.7"
 source = { editable = "." }
 dependencies = [
     { name = "rich-click" },

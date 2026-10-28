@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.7] 2026-10-29 00:44:33
+
 ### Fixed
 
 - `is_pytest_active()` and `is_testenv_active()` called without an `arg_string` return `True`
