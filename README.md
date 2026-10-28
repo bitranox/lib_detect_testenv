@@ -209,7 +209,9 @@ else:
 Returns `True` if any test environment is detected (pytest, doctest, or setup.py test).
 
 **Parameters:**
-- `arg_string` (optional): If `None`, uses `str(sys.argv())`
+- `arg_string` (optional): If `None`, uses `str(sys.argv())`, and a pytest-xdist worker
+  (`PYTEST_XDIST_WORKER` set) counts as pytest: its `sys.argv` does not name pytest. A given
+  `arg_string` is judged on its own.
 
 **Returns:**
 - `True` if test environment is detected
@@ -252,7 +254,9 @@ assert is_doctest_active(arg_string="doctest.py") == True
 Returns `True` if pytest is detected.
 
 **Parameters:**
-- `arg_string` (optional): If `None`, uses `str(sys.argv())`
+- `arg_string` (optional): If `None`, uses `str(sys.argv())`, and a pytest-xdist worker
+  (`PYTEST_XDIST_WORKER` set) counts as pytest: its `sys.argv` does not name pytest. A given
+  `arg_string` is judged on its own.
 
 **Returns:**
 - `True` if pytest is detected

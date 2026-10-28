@@ -77,11 +77,12 @@ Behaviors Layer (behaviors.py)           ← Demo commands only
 **Purpose:** Detect if any test environment is active (pytest, doctest, or setup.py test).
 
 **Input:**
-- `arg_string` (optional): Custom argument string to check. If None, uses `str(sys.argv)`.
+- `arg_string` (optional): Custom argument string to check. If None, uses `str(sys.argv)`, and a
+  pytest-xdist worker (`PYTEST_XDIST_WORKER` set) counts as pytest.
 
 **Output:** `True` if test environment detected, `False` otherwise.
 
-**Location:** src/lib_detect_testenv/lib_detect_testenv.py:9
+**Location:** src/lib_detect_testenv/lib_detect_testenv.py:10
 
 **Example:**
 ```python
@@ -102,12 +103,14 @@ if is_testenv_active():
 - Checks for `/pytest/__main__.py` in arguments
 - Checks for `python -m pytest` pattern
 - Checks `PYTEST_IS_RUNNING` environment variable
+- Without an `arg_string`, also checks `PYTEST_XDIST_WORKER`: a pytest-xdist worker runs as
+  `python -c`, so its `sys.argv` does not name pytest
 
 **Input:** `arg_string` (optional): Custom argument string to check.
 
 **Output:** `True` if pytest detected, `False` otherwise.
 
-**Location:** src/lib_detect_testenv/lib_detect_testenv.py:68
+**Location:** src/lib_detect_testenv/lib_detect_testenv.py:70
 
 **Example:**
 ```python
@@ -132,7 +135,7 @@ if is_pytest_active():
 
 **Output:** `True` if doctest detected, `False` otherwise.
 
-**Location:** src/lib_detect_testenv/lib_detect_testenv.py:38
+**Location:** src/lib_detect_testenv/lib_detect_testenv.py:42
 
 ---
 
@@ -147,7 +150,7 @@ if is_pytest_active():
 
 **Output:** `True` if setup.py detected, `False` otherwise.
 
-**Location:** src/lib_detect_testenv/lib_detect_testenv.py:105
+**Location:** src/lib_detect_testenv/lib_detect_testenv.py:108
 
 ---
 
@@ -162,7 +165,7 @@ if is_pytest_active():
 
 **Output:** `True` if `setup.py test` detected, `False` otherwise.
 
-**Location:** src/lib_detect_testenv/lib_detect_testenv.py:132
+**Location:** src/lib_detect_testenv/lib_detect_testenv.py:135
 
 ---
 
@@ -174,7 +177,7 @@ if is_pytest_active():
 
 **Output:** `True` if docrunner.py found, `False` otherwise.
 
-**Location:** src/lib_detect_testenv/lib_detect_testenv.py:164
+**Location:** src/lib_detect_testenv/lib_detect_testenv.py:167
 
 ---
 
@@ -193,7 +196,7 @@ if is_pytest_active():
 
 **Output:** None (modifies sys.path in place)
 
-**Location:** src/lib_detect_testenv/lib_detect_testenv.py:188
+**Location:** src/lib_detect_testenv/lib_detect_testenv.py:198
 
 **Example:**
 ```python

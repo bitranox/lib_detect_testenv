@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Fixed
+
+- `is_pytest_active()` and `is_testenv_active()` called without an `arg_string` return `True`
+  inside a pytest-xdist worker. A worker runs as `python -c`, so its `sys.argv` names neither
+  pytest nor a test file and both returned `False` there; they now also check the
+  `PYTEST_XDIST_WORKER` variable xdist sets in every worker. A call given an `arg_string` is still
+  judged on that string alone.
+
+### Tests
+
+- The suite runs in parallel: `pytest-xdist` joins the dev extra and the `workers = 1` setting that
+  kept `make test` serial is gone.
+
 ## [3.0.6] 2026-10-15 16:35:25
 
 ### Fixed
