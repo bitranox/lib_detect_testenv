@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.0.7] 2026-10-29 00:44:33
+## [3.0.7] - 2026-10-29
 
 ### Fixed
 
@@ -22,7 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The suite runs in parallel: `pytest-xdist` joins the dev extra and the `workers = 1` setting that
   kept `make test` serial is gone.
 
-## [3.0.6] 2026-10-15 16:35:25
+## [3.0.6] - 2026-10-15
 
 ### Fixed
 
@@ -43,7 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   (`pytest_runtest_setup` in `tests/conftest.py`); registered in `pyproject.toml` alone they skipped
   nothing, so a test trusting its marker ran everywhere. `tests/test_platform_markers.py` pins it.
 
-## [3.0.5] 2026-10-15 14:11:33
+## [3.0.5] - 2026-10-15
 
 ### Added
 - Python 3.15 is a supported version: declared in the classifiers, so CI and `make test-all` run it.
@@ -56,7 +56,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   a plain `pip install` from PyPI does not.
 - `rtoml` floor raised to 0.14.0, the first release with Python 3.15 wheels.
 
-## [3.0.4] 2026-08-01 00:14:59
+## [3.0.4] - 2026-08-01
 ### Fixed
 - **Console output no longer crashes on a legacy codepage.** A Windows console at codepage 1252
   hands Python an `errors="strict"` stream, so writing a non-ASCII character such as a check mark
@@ -68,7 +68,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   module reaches for `click.echo` or builds an unwrapped `Console(file=sys.stdout)` again.
 
 
-## [3.0.3] 2026-07-24 16:01:54
+## [3.0.3] - 2026-07-24
 
 ### Fixed
 - Fixed CI going red under the latest ruff (0.16 widened its default rule set to ~920 rules on a
@@ -91,7 +91,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   to the module top (PLC0415).
 - Replaced `Optional[X]` with `X | None` throughout `cli.py` (UP045).
 
-## [3.0.2] 2026-06-14
+## [3.0.2] - 2026-06-14
 
 ### Changed
 - Added a `typed_click.py` facade wrapping rich-click's `option` / `version_option` decorators behind explicit, fully-known signatures, keeping the CLI strict-clean under pyright (`reportUnknownMemberType`). The repo-wide `reportUnknownMemberType` suppression is retained, but only for the `tomli` backport (untyped on Python 3.10); the rich-click decorators no longer rely on it.
