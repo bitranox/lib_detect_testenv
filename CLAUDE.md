@@ -62,20 +62,6 @@ lib_detect_testenv/
 └── README.md                  # Project overview
 ```
 
-## Versioning & Releases
-
-- **Single Source of Truth**: Package version is in `pyproject.toml` (`[project].version`)
-- **Version Bumps**: update `pyproject.toml`, `CHANGELOG.md` and update the constants in `src/lib_detect_testenv/__init__conf__.py` according to `pyproject.toml`
-    - Automation rewrites `src/lib_detect_testenv/__init__conf__.py` from `pyproject.toml`, so runtime code imports generated constants instead of querying `importlib.metadata`.
-    - bmk regenerates that metadata module itself - it runs as a stage of `make bump`, and again before every `make commit` / `make push`. `make test` does not regenerate it, and the generated constants are never hand-edited.
-- **Release Tags**: Format is `vX.Y.Z` (push tags for CI to build and publish)
-
-## Make targets specific to this repo
-
-- `make run` - Run module entry (`python -m ... --help`)
-
-Everything else is the generated bmk list: run `make help`.
-
 ## Architecture Overview
 
 This library provides test environment detection with a simple layered structure:
@@ -89,9 +75,3 @@ Import rules (enforced by import-linter):
 - Core detection functions have no internal dependencies
 
 Apply principles use skill `bitranox:coding-python-clean-architecture` when designing and implementing features.
-
-## Commit & Push Policy
-
-### Pre-Push Requirements
-- **Always run `make test` before pushing** to avoid lint/test breakage
-- Ensure all tests pass and code is properly formatted
