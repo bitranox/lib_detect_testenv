@@ -36,7 +36,7 @@ dev = [
   "pytest>=9.2.0; python_version>='3.10'",
   "pytest-cov>=7.1.0",
   "pytest-xdist>=3.8.0",
-  "ruff>=0.17.3",
+  "ruff>=0.17.5",
   "pyright[nodejs]>=1.1.414",
   "bandit>=1.8.6,<1.9; python_version<'3.10'",
   "bandit>=1.9.4; python_version>='3.10'",
@@ -51,7 +51,7 @@ dev = [
   # Re-enable once codecov-cli relaxes its click<8.3.0 pin.
   # "codecov-cli>=11.2.8",
   # Transitive CVE pins
-  "click>=8.5.0",                # CVE-2026-7246
+  "click>=8.5.1",                # CVE-2026-7246
   "pip-audit>=2.10.1",
   "textual>=8.2.8",
   "import-linter>=2.5.2,<2.6; python_version<'3.10'",
@@ -225,4 +225,4 @@ ignores = ["E003"]
 
 [tool.uv]
 exclude-newer = "7 days"
-exclude-newer-package = {hatchling = "2026-10-28T02:27:31Z", pytest = "2026-10-27T21:30:21Z", ruff = "2026-10-27T00:34:06Z"}
+exclude-newer-package = {lib-detect-testenv = false}
